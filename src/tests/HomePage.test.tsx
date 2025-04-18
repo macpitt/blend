@@ -2,9 +2,29 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { describe, it, expect, vi } from 'vitest';
-import { SpiceProvider } from '@/contexts/SpiceContext';
 import HomePage from '@/pages/HomePage';
 import userEvent from '@testing-library/user-event';
+beforeEach(() => {
+  vi.resetModules(); // avoid stale module caching
+});
+import * as actualModule from '@/hooks/useSpiceContext';
+console.log('🔍 Resolved module:', actualModule);
+
+vi.mock('@/hooks/useSpiceContext', () => ({
+  useSpiceContext: () => ({
+    spices: [
+      { id: 1, name: 'Cumin', price: '$$', heat:3 }, { id: 2, name: 'Turmeric', price:'$$$',heat:2 }
+    ],
+    blends: [
+      { id: 1, name: 'Garam Masala', spices: [], blends: [] },
+      { id: 2, name: 'Tandoori Mix', spices: [], blends: [] }
+    ],
+    loadingSpices: false,
+    loadingBlends: false,
+    error: null
+  })
+}));
+
 
 // Mock the Layout component to simplify testing
 vi.mock('@/components/Layout', () => ({
@@ -25,11 +45,9 @@ vi.mock('@/features/spices/components/SpiceCard', () => ({
 
 const renderWithProviders = () => {
   return render(
-    <SpiceProvider>
       <BrowserRouter>
         <HomePage />
       </BrowserRouter>
-    </SpiceProvider>
   );
 };
 
