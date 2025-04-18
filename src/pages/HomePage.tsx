@@ -7,8 +7,14 @@ import SpiceCard from '@/features/spices/components/SpiceCard';
 import LoadingSpinner from '@/components/LoadingSpinner';
 
 const HomePage = () => {
-  const { blends, spices, loadingBlends, loadingSpices, error } = useSpiceContext();
-  
+  //const { blends, spices, loadingBlends, loadingSpices, error } = useSpiceContext();
+  const context = useSpiceContext();
+console.log('🧪 useSpiceContext value:', context);
+
+if (!context) return <div>❗ No context</div>;
+
+const { blends, spices, loadingBlends, loadingSpices, error } = context;
+
   return (
     <Layout>
       <div className="text-center mb-12">
@@ -41,7 +47,7 @@ const HomePage = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blends.slice(0, 3).map(blend => (
+            {Array.isArray(blends) && blends.slice(0, 3).map(blend => (
               <BlendCard key={blend.id} blend={blend} />
             ))}
           </div>
@@ -65,7 +71,7 @@ const HomePage = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {spices.slice(0, 4).map(spice => (
+            {Array.isArray(spices) && spices.slice(0, 4).map(spice => (
               <SpiceCard key={spice.id} spice={spice} />
             ))}
           </div>
