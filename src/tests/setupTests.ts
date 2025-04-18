@@ -9,7 +9,7 @@ afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
 // Prevent useSpiceData from ever returning undefined in tests:
-vi.mock('@/hooks/useSpiceData', async () => {
+/*vi.mock('@/hooks/useSpiceData', async () => {
   const actual = await vi.importActual<typeof import('@/hooks/useSpiceData')>(
     '@/hooks/useSpiceData'
   )
@@ -24,4 +24,4 @@ vi.mock('@/hooks/useSpiceData', async () => {
       refreshData: vi.fn(),
     }),
   }
-})
+})*/
