@@ -1,0 +1,119 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 30 10% 15%;
+
+    --card: 40 33% 98%;
+    --card-foreground: 30 10% 15%;
+
+    --popover: 40 33% 98%;
+    --popover-foreground: 30 10% 15%;
+
+    --primary: 25 86% 40%;
+    --primary-foreground: 40 33% 98%;
+
+    --secondary: 40 33% 90%;
+    --secondary-foreground: 30 10% 15%;
+
+    --muted: 40 33% 90%;
+    --muted-foreground: 30 10% 40%;
+
+    --accent: 25 86% 95%;
+    --accent-foreground: 25 86% 40%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 40 33% 98%;
+
+    --border: 30 10% 80%;
+    --input: 30 10% 80%;
+    --ring: 25 86% 40%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 30 10% 10%;
+    --foreground: 40 33% 98%;
+
+    --card: 30 10% 15%;
+    --card-foreground: 40 33% 98%;
+
+    --popover: 30 10% 15%;
+    --popover-foreground: 40 33% 98%;
+
+    --primary: 25 86% 40%;
+    --primary-foreground: 40 33% 98%;
+
+    --secondary: 30 10% 20%;
+    --secondary-foreground: 40 33% 98%;
+
+    --muted: 30 10% 20%;
+    --muted-foreground: 40 33% 70%;
+
+    --accent: 25 86% 20%;
+    --accent-foreground: 40 33% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 40 33% 98%;
+
+    --border: 30 10% 30%;
+    --input: 30 10% 30%;
+    --ring: 25 86% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold;
+  }
+}
+
+@layer components {
+  .spice-card {
+    @apply rounded-lg p-4 bg-white border border-border shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .spice-blend-card {
+    @apply rounded-lg p-5 bg-white border border-border shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .heat-level {
+    @apply inline-flex items-center;
+  }
+  
+  .heat-dot {
+    @apply h-2 w-2 rounded-full mx-0.5;
+  }
+  
+  .heat-dot-filled {
+    @apply bg-spice-paprika;
+  }
+  
+  .heat-dot-empty {
+    @apply bg-gray-200;
+  }
+}
